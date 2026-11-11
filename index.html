@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>ARSX — Coming Soon</title>
+<meta name="description" content="ARSX — Arshia Ajankan">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --ink: #111;
+    --muted: #777;
+    --line: #e9e9e9;
+    --paper: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Vazirmatn", Tahoma, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+/* HEADER */
+
+.topbar {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 5.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: .12em;
+}
+
+.brand {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: .16em;
+    direction: ltr;
+}
+
+.date {
+    direction: ltr;
+    color: #777;
+    font: 11px Arial, sans-serif;
+    letter-spacing: .12em;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100svh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px 80px;
+    isolation: isolate;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 9vh 5.5vw;
+    border: 1px solid #f0f0f0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero-inner {
+    text-align: center;
+    transform: translateY(-2vh);
+}
+
+/* LOGO: ALL FOUR LETTERS UPPERCASE */
+
+.logo {
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: clamp(76px, 17vw, 190px);
+    line-height: .9;
+    letter-spacing: -.105em;
+    direction: ltr;
+    display: inline-block;
+    padding-right: .1em;
+}
+
+.tagline {
+    margin: 27px 0 0;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: .24em;
+    direction: ltr;
+}
+
+.coming {
+    margin: 64px 0 0;
+    font: 400 11px Arial, sans-serif;
+    letter-spacing: .42em;
+    direction: ltr;
+}
+
+/* SCROLL */
+
+.scroll-cue {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #777;
+    font: 9px Arial, sans-serif;
+    letter-spacing: .22em;
+    text-decoration: none;
+}
+
+.scroll-cue::after {
+    content: "";
+    height: 34px;
+    width: 1px;
+    background: #999;
+    animation: scrollline 1.8s ease-in-out infinite;
+    transform-origin: top;
+}
+
+@keyframes scrollline {
+    0%, 100% {
+        transform: scaleY(.35);
+        opacity: .4;
+    }
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* ABOUT */
+
+.about {
+    min-height: 78vh;
+    padding: 110px 8vw 90px;
+    position: relative;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.eyebrow {
+    font: 10px Arial, sans-serif;
+    letter-spacing: .3em;
+    color: #888;
+    direction: ltr;
+}
+
+.about h2 {
+    font-size: clamp(30px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 20px 0 12px;
+}
+
+.about p {
+    max-width: 560px;
+    color: #777;
+    line-height: 2.2;
+    font-size: 14px;
+    margin: 0;
+}
+
+.contact {
+    margin-top: 55px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #111;
+    padding: 13px 20px;
+    text-decoration: none;
+    font-size: 12px;
+    transition: .25s;
+}
+
+.telegram:hover {
+    background: #111;
+    color: #fff;
+}
+
+.handle {
+    font: 12px Arial, sans-serif;
+    direction: ltr;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 22px 5.5vw;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font: 10px Arial, sans-serif;
+    letter-spacing: .12em;
+    direction: ltr;
+}
+
+/* SPIDERS */
+
+#spider-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.spider-wrap {
+    position: absolute;
+    width: 76px;
+    height: 72px;
+    left: 0;
+    top: 0;
+    will-change: transform;
+    filter: drop-shadow(0 3px 3px #0002);
+}
+
+.spider-wrap canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* PERSIAN SPEECH BUBBLES */
+
+.bubble {
+    position: absolute;
+    bottom: 66px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    white-space: nowrap;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 7px 11px;
+
+    font-family: "Vazirmatn", Tahoma, sans-serif;
+    font-size: 11px;
+    color: #222;
+
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: isolate;
+    writing-mode: horizontal-tb;
+
+    box-shadow: 0 3px 14px #0000000a;
+    opacity: 0;
+    transition: opacity .35s;
+}
+
+.bubble.show {
+    opacity: 1;
+}
+
+.bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .topbar {
+        padding: 20px 22px;
+    }
+
+    .hero::before {
+        inset: 8vh 16px;
+    }
+
+    .about {
+        padding: 85px 25px;
+    }
+
+    .spider-wrap {
+        width: 60px;
+        height: 58px;
+    }
+
+    .bubble {
+        bottom: 53px;
+        font-size: 10px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <span class="brand">ARSHIA AJANKAN</span>
+    <time class="date" id="date"></time>
+</header>
+
+<main>
+
+    <!-- HOME -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-inner">
+
+            <div class="logo" aria-label="ARSX">ARSX</div>
+
+            <div class="tagline">
+                A NEW PERSPECTIVE
+            </div>
+
+            <p class="coming">
+                COMING SOON
+            </p>
+
+        </div>
+
+        <a class="scroll-cue" href="#about">
+            <span>SCROLL TO EXPLORE</span>
+        </a>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="eyebrow">
+            01 / ABOUT
+        </div>
+
+        <h2>
+            به دنیای ARSX خوش آمدید.
+        </h2>
+
+        <p>
+            اینجا نقطه‌ی شروع یک مسیر تازه است؛
+            جایی برای ایده‌ها، تجربه‌ها و ساختن چیزهایی متفاوت.
+            به‌زودی بیشتر می‌بینید.
+        </p>
+
+        <div class="contact">
+
+            <a
+                class="telegram"
+                href="https://t.me/Ars_teamX"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span>ارتباط در تلگرام</span>
+                <span class="handle">@Ars_teamX ↗</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <span>© ARSX</span>
+    <span>ARSHIA AJANKAN</span>
+</footer>
+
+<!-- SPIDERS -->
+
+<div id="spider-layer" aria-hidden="true">
+
+    <div class="spider-wrap" id="spiderA">
+        <div class="bubble" id="bubbleA">برو پایین ↓</div>
+        <canvas></canvas>
+    </div>
+
+    <div class="spider-wrap" id="spiderB">
+        <div class="bubble" id="bubbleB">یه نگاه پایین بنداز!</div>
+        <canvas></canvas>
+    </div>
+
+</div>
+
+<script>
+/* AUTOMATIC DATE */
+
+(() => {
+    const date = new Date();
+
+    document.getElementById("date").textContent =
+        date.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }).toUpperCase();
+})();
+</script>
+
+<script type="module">
+
+import * as THREE from
+"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
+
+const reduced = matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+const entries = [
+    {
+        el: document.querySelector("#spiderA"),
+        bubble: document.querySelector("#bubbleA"),
+        x: .16,
+        y: .43,
+        vx: .24,
+        vy: .09,
+        phase: 0,
+        hold: 0
+    },
+    {
+        el: document.querySelector("#spiderB"),
+        bubble: document.querySelector("#bubbleB"),
+        x: .78,
+        y: .69,
+        vx: -.19,
+        vy: -.07,
+        phase: 2.2,
+        hold: 0
+    }
+];
+
+function material(color, roughness = .82) {
+    return new THREE.MeshStandardMaterial({
+        color,
+        roughness,
+        metalness: 0
+    });
+}
+
+function makeSpider(canvas) {
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true
+    });
+
+    renderer.setPixelRatio(
+        Math.min(devicePixelRatio, 2)
+    );
+
+    renderer.setSize(152, 144, false);
+
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+        32,
+        1,
+        .1,
+        30
+    );
+
+    camera.position.set(0, 2.3, 7.8);
+    camera.lookAt(0, .2, 0);
+
+    scene.add(
+        new THREE.HemisphereLight(
+            0xffffff,
+            0x5b514b,
+            2
+        )
+    );
+
+    const key = new THREE.DirectionalLight(
+        0xffffff,
+        2.2
+    );
+
+    key.position.set(-3, 5, 5);
+    scene.add(key);
+
+    const fill = new THREE.DirectionalLight(
+        0x9b8b7d,
+        .8
+    );
+
+    fill.position.set(4, 2, -3);
+    scene.add(fill);
+
+    const root = new THREE.Group();
+    scene.add(root);
+
+    const dark = material(0x211d1a);
+    const abdomenMat = material(0x302720);
+    const jointMat = material(0x171513);
+    const hairMat = material(0x4a4038);
+
+    function sphere(parent, scale, mat, pos) {
+
+        const mesh = new THREE.Mesh(
+            new THREE.SphereGeometry(1, 20, 14),
+            mat
+        );
+
+        mesh.scale.set(...scale);
+        mesh.position.set(...pos);
+
+        parent.add(mesh);
+
+        return mesh;
+    }
+
+    function segment(parent, a, b, r1, r2, mat) {
+
+        const va = new THREE.Vector3(...a);
+        const vb = new THREE.Vector3(...b);
+
+        const delta = vb.clone().sub(va);
+
+        const mesh = new THREE.Mesh(
+            new THREE.CylinderGeometry(
+                r2,
+                r1,
+                delta.length(),
+                8
+            ),
+            mat
+        );
+
+        mesh.position
+            .copy(va)
+            .add(vb)
+            .multiplyScalar(.5);
+
+        mesh.quaternion.setFromUnitVectors(
+            new THREE.Vector3(0, 1, 0),
+            delta.normalize()
+        );
+
+        parent.add(mesh);
+
+        return mesh;
+    }
+
+    /* BODY */
+
+    sphere(
+        root,
+        [.31, .25, .36],
+        dark,
+        [0, .12, .03]
+    );
+
+    sphere(
+        root,
+        [.43, .34, .58],
+        abdomenMat,
+        [0, .13, -.57]
+    );
+
+    /* BODY DETAILS */
+
+    for (let i = 0; i < 3; i++) {
+
+        const mark = sphere(
+            root,
+            [.018, .012, .11],
+            hairMat,
+            [0, .31, -.34 - i * .16]
+        );
+
+        mark.rotation.x = -.15;
+    }
+
+    /* HEAD */
+
+    sphere(
+        root,
+        [.19, .17, .2],
+        dark,
+        [0, .12, .39]
+    );
+
+    for (const side of [-1, 1]) {
+
+        for (let j = 0; j < 2; j++) {
+
+            sphere(
+                root,
+                [.035, .035, .025],
+                material(0x090909, .35),
+                [
+                    side * (.075 + j * .045),
+                    .19,
+                    .56 - j * .035
+                ]
+            );
+        }
+    }
+
+    /* EIGHT LEGS */
+
+    const legs = [];
+
+    for (const side of [-1, 1]) {
+
+        for (let i = 0; i < 4; i++) {
+
+            const hip = new THREE.Group();
+
+            hip.position.set(
+                side * .22,
+                .12,
+                .25 - i * .22
+            );
+
+            root.add(hip);
+
+            sphere(
+                hip,
+                [.055, .055, .055],
+                jointMat,
+                [0, 0, 0]
+            );
+
+            const upper = new THREE.Group();
+
+            hip.add(upper);
+
+            const kneePos = [
+                side * (.35 + i * .025),
+                .16,
+                (i - 1.5) * .10
+            ];
+
+            segment(
+                upper,
+                [0, 0, 0],
+                kneePos,
+                .035,
+                .023,
+                dark
+            );
+
+            sphere(
+                upper,
+                [.035, .035, .035],
+                jointMat,
+                kneePos
+            );
+
+            const lower = new THREE.Group();
+
+            lower.position.set(...kneePos);
+
+            upper.add(lower);
+
+            const foot = [
+                side * (.28 + i * .02),
+                -.30,
+                (i - 1.5) * .13
+            ];
+
+            segment(
+                lower,
+                [0, 0, 0],
+                foot,
+                .021,
+                .009,
+                dark
+            );
+
+            const tip = [
+                foot[0] + side * .055,
+                foot[1] - .035,
+                foot[2] + .05
+            ];
+
+            segment(
+                lower,
+                foot,
+                tip,
+                .009,
+                .004,
+                hairMat
+            );
+
+            legs.push({
+                hip,
+                upper,
+                lower,
+                side,
+                index: i,
+                phase:
+                    (i % 2 ? Math.PI : 0) +
+                    (side < 0 ? Math.PI : 0)
+            });
+        }
+    }
+
+    /* SMALL FRONT APPENDAGES */
+
+    for (const side of [-1, 1]) {
+
+        segment(
+            root,
+            [side * .08, .03, .48],
+            [side * .15, -.04, .68],
+            .025,
+            .012,
+            dark
+        );
+    }
+
+    return {
+        renderer,
+        scene,
+        camera,
+        root,
+        legs
+    };
+}
+
+const spiders = entries.map(entry =>
+    makeSpider(entry.el.querySelector("canvas"))
+);
+
+/* MOVEMENT */
+
+let last = performance.now();
+
+function animate(now) {
+
+    const dt = Math.min(
+        (now - last) / 1000,
+        .04
+    );
+
+    last = now;
+
+    entries.forEach((entry, index) => {
+
+        const spider = spiders[index];
+
+        const t = now * .001;
+
+        if (!reduced) {
+
+            if (entry.hold > 0) {
+
+                entry.hold -= dt;
+
+            } else {
+
+                entry.x += entry.vx * dt * .055;
+                entry.y += entry.vy * dt * .055;
+
+                if (
+                    entry.x < .06 ||
+                    entry.x > .94
+                ) {
+
+                    entry.vx *= -1;
+
+                    entry.x = Math.max(
+                        .06,
+                        Math.min(.94, entry.x)
+                    );
+
+                    entry.hold = 1.1;
+                }
+
+                if (
+                    entry.y < .12 ||
+                    entry.y > .88
+                ) {
+
+                    entry.vy *= -1;
+
+                    entry.y = Math.max(
+                        .12,
+                        Math.min(.88, entry.y)
+                    );
+
+                    entry.hold = .8;
+                }
+
+                if (Math.random() < dt * .055) {
+                    entry.hold = .9;
+                }
+            }
+
+            spider.root.rotation.y =
+                entry.vx < 0 ? Math.PI : 0;
+
+            spider.legs.forEach(leg => {
+
+                const swing = Math.sin(
+                    t * 7 + leg.phase + entry.phase
+                );
+
+                leg.hip.rotation.z =
+                    leg.side * (.13 + swing * .23);
+
+                leg.upper.rotation.x =
+                    swing * .22;
+
+                leg.lower.rotation.x =
+                    .18 + Math.max(0, -swing) * .32;
+            });
+        }
+
+        const width = innerWidth;
+        const height = innerHeight;
+
+        entry.el.style.transform =
+            `translate3d(
+                ${entry.x * width - 38}px,
+                ${entry.y * height - 36}px,
+                0
+            )`;
+
+        spider.renderer.render(
+            spider.scene,
+            spider.camera
+        );
+    });
+
+    requestAnimationFrame(animate);
+}
+
+/* PERSIAN SPEECH BUBBLES */
+
+const phrases = [
+    "برو پایین ↓",
+    "یه نگاه پایین بنداز!",
+    "بیا تلگرام! ↗",
+    "اینجا رو ببین ↓"
+];
+
+let bubbleIndex = 0;
+
+function showBubbles() {
+
+    entries.forEach((entry, index) => {
+
+        entry.bubble.classList.remove("show");
+
+        entry.bubble.textContent =
+            phrases[
+                (bubbleIndex + index) % phrases.length
+            ];
+
+        setTimeout(() => {
+
+            entry.bubble.classList.add("show");
+
+        }, 180 + index * 350);
+    });
+
+    bubbleIndex =
+        (bubbleIndex + 1) % phrases.length;
+}
+
+showBubbles();
+
+setInterval(showBubbles, 4300);
+
+/* START ANIMATION */
+
+requestAnimationFrame(animate);
+
+/* RESIZE */
+
+window.addEventListener("resize", () => {
+
+    spiders.forEach(spider => {
+
+        spider.renderer.setPixelRatio(
+            Math.min(devicePixelRatio, 2)
+        );
+    });
+});
+
+</script>
+
+</body>
+</html>
